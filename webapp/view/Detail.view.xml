@@ -1,0 +1,37 @@
+<mvc:View controllerName="tech.sothis.formacion.FlexibleColumnLayout.controller.Detail" xmlns="sap.m" xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form">
+	<semantic:SemanticPage>
+		<semantic:titleHeading>
+			<Title id="detailTitle" text="Customer Detail"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<VBox id="vbox">
+				<form:SimpleForm id="form" editable="false" layout="ResponsiveGridLayout" title="Customer {CustomerID}" labelSpanL="1"
+					labelSpanM="3" labelSpanS="5" singleContainerFullSize="false">
+					<Label id="nombre" text="Name"/>
+					<Text id="nombreText" text="{ContactName}"/>
+					<Label id="direccion" text="Address"/>
+					<Text id="direccionText" text="{Address}"/>
+				</form:SimpleForm>
+				<Table id="tOrdenes" width="auto" items="{Orders}" growing="true" growingScrollToLoad="true">
+					<columns>
+						<Column id="idColumn">
+							<Text text="Order ID" id="idColumnTitle"/>
+						</Column>
+						<Column id="dateColumn">
+							<Text text="Order Date" id="dateColumnTitle"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="cli" type="Navigation" press="onPress">
+							<cells>
+								<ObjectIdentifier id="idCell" title="{OrderID}"/>
+								<Text id="dateCell" text="{OrderDate}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

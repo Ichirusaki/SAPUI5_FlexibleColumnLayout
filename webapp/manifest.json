@@ -1,0 +1,116 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "tech.sothis.formacion.FlexibleColumnLayout",
+		"type": "application",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"Northwind.svc": {
+				"uri": "/Northwind/v2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/Northwind.svc/metadata.xml"
+				}
+			}
+		},
+		"title": "{{appTitle}}"
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "tech.sothis.formacion.FlexibleColumnLayout.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "fcl"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {},
+				"sap.uxap": {}
+			}
+		},
+		"config": {
+			"fullWidth": true
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"viewPath": "tech.sothis.formacion.FlexibleColumnLayout.view",
+				"controlId": "flexibleColumnLayout",
+				"transition": "slide",
+				"async": true
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "master",
+				"target": ["master", "detail"],
+				"layout": "TwoColumnsMidExpanded"
+			}, {
+				"pattern": "Customers/{CustomerID}",
+				"name": "detail",
+				"target": ["master", "detail"],
+				"layout": "TwoColumnsMidExpanded"
+			}, {
+				"pattern": "Customers/{CustomerID}/Order/{OrderID}",
+				"name": "detailDetail",
+				"target": ["master", "detail", "detailDetail"],
+				"layout": "ThreeColumnsEndExpanded"
+			}],
+			"targets": {
+				"master": {
+					"viewName": "Master",
+					"controlAggregation": "beginColumnPages",
+					"viewLevel": 1,
+					"viewId": "master"
+				},
+				"detail": {
+					"viewName": "Detail",
+					"controlAggregation": "midColumnPages",
+					"viewLevel": 2,
+					"viewId": "detail"
+				},
+				"detailDetail": {
+					"viewName": "DetailDetail",
+					"controlAggregation": "endColumnPages",
+					"viewLevel": 3,
+					"viewId": "detailDetail"
+				}
+			}
+		},
+		"models": {
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": false
+				},
+				"dataSource": "Northwind.svc",
+				"preload": true
+			}
+		},
+		"contentDensities": {
+			"compact": false,
+			"cozy": false
+		},
+		"flexEnabled": true
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": false,
+			"tablet": false,
+			"phone": false
+		}
+	}
+}

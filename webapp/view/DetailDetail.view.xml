@@ -1,0 +1,21 @@
+<mvc:View controllerName="tech.sothis.formacion.FlexibleColumnLayout.controller.DetailDetail" xmlns="sap.m" xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form">
+	<semantic:SemanticPage>
+		<semantic:titleHeading>
+			<Title id="detailTitle" text="Order Detail"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<VBox id="vbox">
+				<form:SimpleForm id="form" editable="false" layout="ResponsiveGridLayout" title="Order {OrderID}" labelSpanL="1"
+					labelSpanM="3" labelSpanS="5" singleContainerFullSize="false">
+					<Label id="nombre" text="Employee"/>
+					<Text id="nombreText" text="{EmployeeID}"/>
+					<Label id="direccion" text="Date"/>
+					<Text id="direccionText" text="{OrderDate}"/>
+					<Label id="otro" text="Country"/>
+					<Text id="otroText" text="{ShipCountry}"/>
+				</form:SimpleForm>
+			</VBox>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

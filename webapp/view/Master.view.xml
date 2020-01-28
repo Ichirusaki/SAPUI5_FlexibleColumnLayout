@@ -1,0 +1,22 @@
+<mvc:View
+	controllerName="tech.sothis.formacion.FlexibleColumnLayout.controller.Master"
+	xmlns="sap.m"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc">
+	<semantic:SemanticPage>
+		<semantic:titleHeading>
+			<Title id="masterTitle" text="Customers"/>
+		</semantic:titleHeading>
+
+		<semantic:content>
+			<List id="lCustomers" items="{/Customers}" mode="SingleSelectMaster" growing="true"
+				growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+				<items>
+					<ObjectListItem id="liCustomer" press="onSelectionChange" title="{CustomerID}"
+						number="{ContactName}"/>
+				</items>
+			</List>
+		</semantic:content>
+
+	</semantic:SemanticPage>
+</mvc:View>
